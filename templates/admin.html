@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+
+<body>
+    <div class="status-card">
+        <h1>Set Status</h1>
+        <form action="/admin" method="post">
+            <div class="select-container">
+                <select name="status">
+                    <option value="Gaming" {% if current_status == 'Gaming' %} selected {% endif %}>Gaming</option>
+                    <option value="Out" {% if current_status == 'Out' %} selected {% endif %}>Out</option>
+                    <option value="Home" {% if current_status == 'Home' %} selected {% endif %}>Home</option>
+                </select>
+            </div>
+            <input class="submit-button" type="submit" value="Set Status">
+        </form>
+        <div class="thumbs-count">
+            <span class="material-icons-outlined thumbs-up">thumb_up</span>
+            Total thumbs up received: {{ thumbs_up }}
+        </div>
+    </div>
+</body>
+
+</html>

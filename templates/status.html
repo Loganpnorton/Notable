@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Status</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined">
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/12.0.0/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@material/button/dist/mdc.button.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script defer src="https://unpkg.com/@material/button/dist/mdc.button.min.js"></script>
+    <script>
+        function openDialog() {
+            var dialog = document.getElementById('info-dialog');
+            dialog.style.display = 'block';
+        }
+
+        function closeDialog() {
+            var dialog = document.getElementById('info-dialog');
+            dialog.style.display = 'none';
+        }
+
+        function thumbsUp() {
+            fetch('/thumbsup', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log('Thumbs up recorded!');
+                    // Optionally, you can add a small animation or feedback here for user.
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="status-card">
+        {% if current_status == "Out" %}
+            <div class="out-message">
+                <h1>Logan is currently out and about!</h1>
+                <img src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6438/6438558_sd.jpg" alt="Watch your step">
+            </div>
+        {% else %}
+            <h1>Logan is Currently</h1>
+            <p class="material-icons-outlined" style="font-size: 50px;">
+                <!-- Use icons based on status -->
+                {% if current_status == "Gaming" %}
+                    games
+                {% elif current_status == "Out" %}
+                    directions_walk
+                {% else %}
+                    home
+                {% endif %}
+            </p>
+            <h2>{{ current_status }}</h2>
+            {% if current_status == "Gaming" %}
+                <button class="mdc-button mdc-button--raised" onclick="location.href='/send_notification'">
+                    <span class="mdc-button__ripple"></span>
+                    <span class="mdc-button__label">Click if you need me</span>
+                </button>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <!-- Floating Action Button -->
+    <div class="fab" onclick="openDialog()">
+        <span class="material-icons-outlined">
+            help_outline
+        </span>
+        What is this?
+    </div>
+
+    <!-- Dialog -->
+    <div class="dialog" id="info-dialog">
+        <div class="dialog-content">
+            <h2>About Notable</h2>
+            <p>
+                I am Notable, an application created by Logan in Python and utilizing HTML to bring you his location any time you request it. Do you like me? Give me a thumbs up!
+            </p>
+            <span class="material-icons-outlined thumbs-up" onclick="thumbsUp()">thumb_up</span>
+            <button onclick="closeDialog()">Close</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+body {
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #E0E0E0;
+}
+
+.status-card {
+    padding: 20px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;  /* set a width for the card */
+    overflow: hidden;  /* hide overflow content (like a large image) */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.status-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.out-message img {
+    width: 100%;  /* make image width same as card width */
+    height: auto; /* keep the image aspect ratio */
+    margin-top: 10px;  /* add a little spacing between text and image */
+}
+
+/* Floating Action Button Styles */
+.fab {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #6200EA;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.fab:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Dialog Styles */
+.dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.thumbs-up {
+    font-size: 40px;
+    color: #FFC107;  /* gold color */
+    cursor: pointer;
+    transition: transform 0.2s;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.thumbs-up:hover {
+    transform: scale(1.1);  /* slight enlargement on hover */
+}
+
+.select-container {
+    margin: 20px 0;
+    border: 1px solid #D1D1D1;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+select {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    width: 100%;
+    background: transparent;
+    cursor: pointer;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    background-color: #6200EA;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #5200c7;
+}
+
+.thumbs-count {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
